@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       
       - name: Update homebrew
         run: /bin/zsh -i -c "brew update && brew upgrade"
@@ -53,7 +53,7 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install CMake
         run: Invoke-WebRequest -Uri "https://github.com/Kitware/CMake/releases/download/v4.2.3/cmake-4.2.3-windows-x86_64.zip" -OutFile cmake.zip
@@ -111,7 +111,7 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Update APT
         run: apt-get update -y
