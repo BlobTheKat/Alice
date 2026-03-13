@@ -15,7 +15,7 @@ namespace Alice::Meta
 
 ## Description
 
-Returns the type of `Self` with an added lvalue reference. If `Self` is an rvalue reference, reference collapsing yields an lvalue reference. No reference is added if `Self` is `void` (possibly cv-qualified) or a type alias thereof.
+Returns the type of `Self` with an added top-level lvalue reference. If `Self` is an rvalue reference, reference collapsing yields an lvalue reference. No reference is added if `Self` is `void` (possibly cv-qualified) or a type alias thereof.
 
 ---
 
