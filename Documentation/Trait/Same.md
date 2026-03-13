@@ -15,7 +15,7 @@ namespace Alice::Trait
 
 ## Description
 
-`Alice::Trait::Same` is a concept that is satisfied if and only if `Self` is the same type as `T`, including any top-level cvref-qualification (`&`, `&&`, `const`, and/or `volatile`).
+Satisfied if and only if `Self` and `T` strictly denote the same type, including any cvref-qualifiers (`const`, `volatile`, `&`, or `&&`).
 
 ---
 
