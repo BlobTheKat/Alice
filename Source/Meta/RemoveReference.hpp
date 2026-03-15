@@ -2,16 +2,13 @@
 #if alice_major >= 0 and alice_middle >= 0 and alice_minor >= 1
 #ifndef alice_header_guard_meta_remove_reference
 #define alice_header_guard_meta_remove_reference
+#include "Meta/RemoveLvalueReference.hpp"
+#include "Meta/RemoveRvalueReference.hpp"
 
 namespace Alice::Meta
 {
-    template<class Self> using RemoveReference =
-    #ifdef __clang__
-    __remove_reference_t
-    #else
-    __remove_reference
-    #endif
-    (Self);
+    template<class Self> using RemoveReference = RemoveLvalueReference<RemoveRvalueReference<Self>>
+    ;
 }
 
 #endif

@@ -13,6 +13,13 @@ namespace Alice::Meta
 
 ---
 
+## Requirements
+
+- `Alice::Meta::RemoveLvalueReference`
+- `Alice::Meta::RemoveRvalueReference`
+
+---
+
 ## Description
 
 Returns the type of `Self` with the removed top-level lvalue or rvalue reference. If `Self` has no reference, returns `Self` unchanged.
