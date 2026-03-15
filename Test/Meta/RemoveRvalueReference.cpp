@@ -81,7 +81,8 @@ struct Incomplete;
 
 [[nodiscard]] auto alice_test() noexcept -> bool
 {
-    return function(RemoveRvalueReference<const int&&>{42}) and Same<RemoveRvalueReference<Incomplete&&>, Incomplete>;
+    return function(RemoveRvalueReference<const int&&>{42}) and Same<RemoveRvalueReference<
+    Incomplete&&>, Incomplete>;
 }
 
 #ifdef alice_windows
