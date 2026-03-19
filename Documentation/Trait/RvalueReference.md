@@ -48,7 +48,7 @@ void foo(T&& x) requires Alice::Trait::RvalueReference<T>
 {}
 ```
 
-Note how only the underlying type `T` is passed to `LvalueReference`, which is not a reference type.
+Note how only the underlying type `T` is passed to `RvalueReference`, which is not a reference type.
 
 The following definition does include the reference within the concept initialization and works as expected
 
