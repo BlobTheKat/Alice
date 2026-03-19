@@ -29,18 +29,7 @@ Satisfied if and only if `Self` is an rvalue reference type.
 
 ## Notes
 
-This works:  
-```cpp
-void foo(auto&& x) requires Alice::Trait::RvalueReference<decltype(x)>
-{}
-
-int main()
-{	
-	foo(42);
-}
-```
-
-But this doesn't:
+The following won't work as expected:
 ```cpp
 void foo(Alice::Trait::RvalueReference auto&& x)
 {}
@@ -51,6 +40,19 @@ int main()
 }
 ```
 
-That is because the later one is eagerly evaluating the concept before the type of `x` gets deduced due to the overload resolution requirements, and hence, the ambiguity of `x` is kept (`int`? `int&&`? `const int&&`?), hence the compiler doesn't know the type of `x` and it assumes it lacks a valid overload.
+That is because the `foo` definition is interpreted as
 
-The former one forces the type of `x` to be deduced before the overload resolution, since such overload resolution is dependent on its type, due to the `decltype`. Then, `x` is deduced before the overload resolution, and `x` can't be ambiguous anymore because it sees its argument comes from an `int`, which gets implicitly converted to `int&&`, which satisfies the concept.
+```cpp
+template<typename T>
+void foo(T&& x) requires Alice::Trait::RvalueReference<T>
+{}
+```
+
+Note how only the underlying type `T` is passed to `LvalueReference`, which is not a reference type.
+
+The following definition does include the reference within the concept initialization and works as expected
+
+```cpp
+void foo(auto& x) requires Alice::Trait::RvalueReference<decltype(x)>
+{}
+```
